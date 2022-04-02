@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+</head>
+<body>
+  <div class="w3-bar w3-black">
+    <a href="/" class="w3-bar-item w3-button">Home</a>
+    <a href="/login" class="w3-bar-item w3-button">Login</a>
+    <a href="/register" class="w3-bar-item w3-button">Register</a>
+    <a href="/auth/logout" class="w3-bar-item w3-button">Logout</a>
+  </div>
+
+      <hr>
+      <h2>Hello <span style="color: red;"><%= User.username %> </span></h2>
+      <div class="w3-container">
+        <h2>List user</h2>
+      
+        <table class="w3-table-all w3-hoverable">
+          <thead>
+            <tr class="w3-light-grey">
+              <th>ID</th>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Admin</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let i=0; i < dataUser.length; i++) { %>
+                <tr>
+                  <td><%= dataUser[i]._id %></td>
+                  <td><%= dataUser[i].username %></td>
+                  <td><%= dataUser[i].email %></td>
+                  <td><%= dataUser[i].isAdmin %></td>
+            
+                  <td>
+                    <form action="/delete-user/<%= dataUser[i]._id %>" method="get">
+                      <!--
+                         <input type="text" name="" value="<%= dataUser[i].ID %>" hidden>
+                      -->
+                      <button type="submit">Delete</button>
+                    </form>
+                  </td>
+                  
+                  
+                </tr>
+             <% } %>
+          </tbody>
+        </table>
+      </div>
+    
+</body>
+</html>
